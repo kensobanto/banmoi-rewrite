@@ -1,15 +1,15 @@
-const Discord = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
-async function qr(client, message, args) {
-    const Msg = args.join("+");
-    const Embed = new Discord.MessageEmbed()
+async function qr(message, args) {
+    const msg = args.join("+");
+    const embed = new MessageEmbed()
         .setColor("RANDOM")
-        .setImage(encodeURI(`https://chart.googleapis.com/chart?chl=${Msg}&chs=200x200&cht=qr&chld=H%7C0`))
+        .setImage(encodeURI(`https://chart.googleapis.com/chart?chl=${msg}&chs=200x200&cht=qr&chld=H%7C0`))
         .setTimestamp();
 
     message.delete()
 
-    return message.channel.send({embeds:[Embed]});
+    return message.channel.send({embeds:[embed]});
 }
 
 module.exports = {

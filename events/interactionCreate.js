@@ -3,12 +3,6 @@ async function interactionCreate(interaction) {
 
     let banmoi = interaction.client;
 
-
-client.on("interactionCreate", async (interaction) => {
-
-    if (interaction.isCommand()) {
-        
-
     if (interaction.isCommand()) {
             await interaction.deferReply({ ephemeral: false }).catch(() => {});
 
@@ -38,7 +32,6 @@ client.on("interactionCreate", async (interaction) => {
                     if (!json[0]) return interaction.followUp(`Testing`);
                     const data = json[0].data.children[0].data;
 
-
                     const meme_but = new MessageEmbed()
                         .setColor('RANDOM')
                         .setURL(`https://reddit.com${data.permalink}`)
@@ -67,12 +60,6 @@ client.on("interactionCreate", async (interaction) => {
             }
         }
 
-        interaction.member = interaction.guild.members.cache.get(interaction.user.id);
-        
-  if (interaction.isButton()){
-    
-
-
         // see events/messageCreate.js L:38
         try {
             cmd.run(banmoi, interaction, args);
@@ -81,22 +68,10 @@ client.on("interactionCreate", async (interaction) => {
             console.log(error)
         }
 
-
-
-    if (interaction.isContextMenu()) {
-       
-        const command = client.slashCommands.get(interaction.commandName);
-        if (command) command.run(client, interaction);
     }
 }
 
-const fetchBlacklist = await db.get(`blacklist_${interaction.user.id}`) // fetch the interaction user if they are blacklisted
-
-if(fetchBlacklist) {
-    return interaction.reply({ content: `> **Sorry <@${interaction.user.id}> but you are currently blacklisted from using this bot**`})
-}
-        cmd.run(client, interaction, args);
-    }
-  }
-  })
+module.exports = {
+    name: "interactionCreate",
+    func: interactionCreate
 }

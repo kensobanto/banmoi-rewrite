@@ -1,4 +1,4 @@
-const { load_slash_commands } = require("../handlers/slashCommand")
+const { load_slash_commands } = require("../handlers/SlashCommandLoader")
 
 async function ready(banmoi) {
     console.log(`Logged in as ${banmoi.user.tag}!`);

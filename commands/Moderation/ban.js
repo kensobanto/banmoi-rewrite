@@ -1,7 +1,8 @@
 const { MessageEmbed } = require("discord.js");
 
-async function ban(client, message, args) {
+async function ban(message, args) {
     try {
+        const client = message.client;
 
         if (!args[0]) {
             return message.reply(`**Hãy đề cập một người dùng bạn muốn Cấm khỏi máy chủ**`)

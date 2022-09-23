@@ -53,7 +53,7 @@ function add_events(client) {
     for (let file of events) {
         let event = require(`../events/${file}`);
         if (event.name) {
-            client.events.set(event.name, event);
+            client.on(event.name, event.func);
             console.log(`${event.name} Events load`);
         }
     }

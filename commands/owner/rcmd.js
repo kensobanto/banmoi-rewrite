@@ -13,7 +13,7 @@ module.exports = {
 
   ownerOnly: true,
 
-  run: async (client, message, args, ee) => {
+  run: async (message, ) => {
     try {
       client.commands.sweep(() => true);
       glob(`${__dirname}/../**/*.js`, async (err, filePaths) => {

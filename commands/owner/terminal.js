@@ -11,7 +11,7 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
-  run: async (client, message, args) => {
+  run: async (message, args) => {
     
 
     const command = args.join(" ");

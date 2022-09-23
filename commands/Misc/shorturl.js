@@ -1,26 +1,26 @@
-let fetch = require("node-fetch");
-let Discord = require("discord.js");
+const fetch = require("node-fetch");
+const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 
-async function shorturl(client, message, args) {
+async function shorturl(message, args) {
 
     const url = args.join(" ")
-
-    const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
-    const body = await res.text();
     if (!url) {
         return message.channel.send(`Hãy đưa một link để rút gọn`);
     }
 
-    const row = new Discord.MessageActionRow()
+    const res = await fetch(`https://is.gd/create.php?format=simple&url=${encodeURI(url)}`);
+    const body = await res.text();
+
+    const row = new MessageActionRow()
         .addComponents(
-            new Discord.MessageButton()
+            new MessageButton()
                 .setStyle('LINK')
                 .setEmoji('🔗')
                 .setLabel(`Nhấn vào đây`)
                 .setURL(body)
         )
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
         .setColor("RANDOM")
         .setDescription(body);
             
